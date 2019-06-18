@@ -8,7 +8,7 @@ class Form extends React.Component {
     checkedSequences: []
   }
 
-  getUniqueSequence = (e) => {
+  getUniqueSequence = () => {
     this.setState((prevState) => ({
       checkedSequences: [...prevState.checkedSequences, this.state.enteredSequence],
       uniqueSequence: this._getUnuqueSequence()
@@ -16,11 +16,11 @@ class Form extends React.Component {
   }
 
   handleChange = (e) => {
-    const value = e.target.value;
+    const value = e.target.value; // because setState is async we have to preserve the value
 
     this.setState(() => ({
       enteredSequence: value,
-      uniqueSequence: ''
+      uniqueSequence: '' // reset the result
     }));
   }
 
@@ -40,11 +40,7 @@ class Form extends React.Component {
     return (
       <div>
         <input type="text" onChange={ this.handleChange } />
-        <input
-          type="button"
-          value="Alert the text input"
-          onClick={this.getUniqueSequence}
-        />
+        <button onClick={this.getUniqueSequence}>Get unique sequence</button>
         <span className={this.state.uniqueSequence ? '' : 'hidden'}>Here is the result: {this.state.uniqueSequence}</span>
       </div>
     )
