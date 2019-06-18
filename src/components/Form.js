@@ -19,7 +19,8 @@ class Form extends React.Component {
     const value = e.target.value;
 
     this.setState(() => ({
-      enteredSequence: value
+      enteredSequence: value,
+      uniqueSequence: ''
     }));
   }
 
