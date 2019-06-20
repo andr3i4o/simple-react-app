@@ -16,7 +16,8 @@ function checkedSequences(state = [], action) {
       return state.map((historyItem, index) => {
         if (index === action.index) {
           return Object.assign({}, historyItem, {
-            value: historyItem.historyItem
+            value: historyItem.value,
+            uniqueValue: uniqueSequenceCalculator(historyItem.item)
           });
         }
         return historyItem;
@@ -30,14 +31,7 @@ function enteredSequence(state = '' , action) {
   switch (action.type) {
     case types.SET_ENTERED_VALUE:
       return action.value;
-    default:
-      return state;
-  }
-}
-
-function uniqueSequence(state = '' , action) {
-  switch (action.type) {
-    case types.SET_UNIQUE_SEQUENCE:
+    case types.EDIT_HISTORY_ITEM:
       return action.value;
     default:
       return state;
@@ -47,8 +41,7 @@ function uniqueSequence(state = '' , action) {
 
 const uniqueSequenceApp = combineReducers({
   enteredSequence,
-  checkedSequences,
-  uniqueSequence
+  checkedSequences
 });
 
 export default uniqueSequenceApp;
