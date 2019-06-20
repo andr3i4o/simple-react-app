@@ -10,15 +10,15 @@ const mapDispatchToProps = dispatch => {
       dispatch(setHistoryIndex(index));
     }
   }
-}
+};
 
 const mapStateToProps = state => {
   return {checkedSequences: state.checkedSequences}
-}
+};
 
 const HistoryContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(HistoryList)
+)(HistoryList);
 
 export default HistoryContainer

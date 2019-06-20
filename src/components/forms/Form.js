@@ -16,6 +16,6 @@ const Form = ({ enteredSequence, onProcessSequence, enteredSequenceChange, histo
     onProcessSequence: PropTypes.func.isRequired,
     enteredSequence: PropTypes.string.isRequired,
     historyItemIndex: PropTypes.number
-  }
+  };
 
   export default Form

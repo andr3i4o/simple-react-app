@@ -14,14 +14,14 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setEnteredValue(item.target.value));
     }
   };
-}
+};
 
 const mapStateToProps = state => {
   return {
     enteredSequence: state.enteredSequence,
     historyItemIndex: state.historyItemIndex
   };
-}
+};
 
 const FormContainer = connect(
   mapStateToProps,

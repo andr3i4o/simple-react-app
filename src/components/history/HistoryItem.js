@@ -9,12 +9,12 @@ const HistoryItem = ({ onClick, value, uniqueValue }) => (
       <button onClick={onClick}>EDIT</button>
     </td>
   </tr>
-)
+);
 
 HistoryItem.propTypes = {
   onClick: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   uniqueValue: PropTypes.string.isRequired
-}
+};
 
 export default HistoryItem
