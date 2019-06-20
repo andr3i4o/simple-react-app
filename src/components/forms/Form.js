@@ -1,5 +1,6 @@
 import React from "react"
 import './Form.css'
+import PropTypes from 'prop-types'
 
 const Form = ({ enteredSequence, onProcessSequence, enteredSequenceChange, historyItemIndex }) => (
   <div>
@@ -9,5 +10,12 @@ const Form = ({ enteredSequence, onProcessSequence, enteredSequenceChange, histo
       </button>
   </div>
   );
+
+  Form.propTypes = {
+    enteredSequenceChange: PropTypes.func.isRequired,
+    onProcessSequence: PropTypes.func.isRequired,
+    enteredSequence: PropTypes.string.isRequired,
+    historyItemIndex: PropTypes.number
+  }
 
   export default Form
