@@ -5,14 +5,24 @@ import HistoryItem from './HistoryItem'
 
 const HistoryList = ({ checkedSequences, onItemClick }) => (
   <div>
-    <ul>
-      {checkedSequences.map((item, index) => (
-        <HistoryItem key={index} {...item} onClick={() => onItemClick(item, index)} />
-      ))}
-    </ul>
-
+    {checkedSequences.length &&
+      <table>
+        <thead>
+          <tr>
+            <th>Entered Sequence</th>
+            <th>Unique Sequence</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {checkedSequences.map((item, index) => (
+            <HistoryItem key={index} {...item} onClick={() => onItemClick(item, index)} />
+          ))}
+        </tbody>
+      </table>
+    }
   </div>
-)
+);
 
 HistoryList.propTypes = {
   checkedSequences: PropTypes.arrayOf(
@@ -22,6 +32,6 @@ HistoryList.propTypes = {
     }).isRequired
   ).isRequired,
   onItemClick: PropTypes.func.isRequired
-}
+};
 
 export default HistoryList

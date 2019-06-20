@@ -2,11 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const HistoryItem = ({ onClick, value, uniqueValue }) => (
-  <li>
-    <div>Entered Sequence: {value}</div>
-    <div>Unique Sequence: {uniqueValue}</div>
-    <button onClick={onClick}>EDIT</button>
-  </li>
+  <tr>
+    <td>{value}</td>
+    <td>{uniqueValue}</td>
+    <td>
+      <button onClick={onClick}>EDIT</button>
+    </td>
+  </tr>
 )
 
 HistoryItem.propTypes = {
