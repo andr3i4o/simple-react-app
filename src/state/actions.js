@@ -1,9 +1,9 @@
 import * as types from './action-types'
 
-export  function editHistoryItem(index) {
+export  function editHistoryItem(value) {
   return {
     type: types.EDIT_HISTORY_ITEM,
-    index
+    value
   }
 }
 

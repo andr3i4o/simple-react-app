@@ -5,8 +5,8 @@ import { editHistoryItem } from '../../state/actions';
 
 const mapDispatchToProps = dispatch => {
   return {
-    onItemClick: id => {
-      dispatch(editHistoryItem(id))
+    onItemClick: item => {
+      dispatch(editHistoryItem(item.value))
     }
   }
 }

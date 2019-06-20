@@ -7,7 +7,7 @@ const HistoryList = ({ checkedSequences, onItemClick }) => (
   <div>
     <ul>
       {checkedSequences.map((item, index) => (
-        <HistoryItem key={index} {...item} onClick={() => onItemClick(index)} />
+        <HistoryItem key={index} {...item} onClick={() => onItemClick(item)} />
       ))}
     </ul>
 
