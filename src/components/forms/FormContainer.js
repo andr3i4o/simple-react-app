@@ -5,25 +5,25 @@ import { addHistoryItem, setEnteredValue } from '../../state/actions';
 
 const mapDispatchToProps = dispatch => {
   return {
-    onAddSequence: item => {
-      dispatch(addHistoryItem(item))
+    onProcessSequence: item => {
+      dispatch(addHistoryItem(item));
+      dispatch(setEnteredValue(''));
     },
     enteredSequenceChange: item => {
-      dispatch(setEnteredValue(item.target.value))
+      dispatch(setEnteredValue(item.target.value));
     }
-  }
+  };
 }
 
 const mapStateToProps = state => {
   return {
-    enteredSequence: state.enteredSequence,
-    uniqueSequence: state.uniqueSequence
-  }
+    enteredSequence: state.enteredSequence
+  };
 }
 
 const FormContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Form)
+)(Form);
 
 export default FormContainer
