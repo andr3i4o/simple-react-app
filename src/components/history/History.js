@@ -2,18 +2,23 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import HistoryItem from './HistoryItem'
 
-const HistoryList = ({ history, onItemClick }) => (
-  <ul>
-    {history.map((item, index) => (
-      <HistoryItem key={index} {...item} onClick={() => onItemClick(index)} />
-    ))}
-  </ul>
+
+const HistoryList = ({ checkedSequences, onItemClick }) => (
+  <div>
+    <ul>
+      {checkedSequences.map((item, index) => (
+        <HistoryItem key={index} {...item} onClick={() => onItemClick(index)} />
+      ))}
+    </ul>
+
+  </div>
 )
 
 HistoryList.propTypes = {
-  history: PropTypes.arrayOf(
+  checkedSequences: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.number.isRequired
+      value: PropTypes.string.isRequired,
+      uniqueValue: PropTypes.string.isRequired
     }).isRequired
   ).isRequired,
   onItemClick: PropTypes.func.isRequired
