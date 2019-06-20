@@ -1,12 +1,13 @@
 import { connect }  from 'react-redux'
 import HistoryList from './History';
-import { editHistoryItem } from '../../state/actions';
+import { editHistoryItem, setHistoryIndex } from '../../state/actions';
 
 
 const mapDispatchToProps = dispatch => {
   return {
-    onItemClick: item => {
-      dispatch(editHistoryItem(item.value))
+    onItemClick: (item, index) => {
+      dispatch(editHistoryItem(item.value));
+      dispatch(setHistoryIndex(index));
     }
   }
 }

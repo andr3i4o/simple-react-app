@@ -1,13 +1,14 @@
 import { connect }  from 'react-redux'
 import Form from './Form';
-import { addHistoryItem, setEnteredValue } from '../../state/actions';
+import { addHistoryItem, setEnteredValue, setHistoryIndex, updateHistoryItem } from '../../state/actions';
 
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    onProcessSequence: item => {
-      dispatch(addHistoryItem(item));
+    onProcessSequence: (value, historyItemIndex) => {
+      historyItemIndex !== null ?  dispatch(updateHistoryItem(value, historyItemIndex)) : dispatch(addHistoryItem(value));
       dispatch(setEnteredValue(''));
+      dispatch(setHistoryIndex(null));
     },
     enteredSequenceChange: item => {
       dispatch(setEnteredValue(item.target.value));
@@ -17,7 +18,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
   return {
-    enteredSequence: state.enteredSequence
+    enteredSequence: state.enteredSequence,
+    historyItemIndex: state.historyItemIndex
   };
 }
 

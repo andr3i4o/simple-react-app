@@ -8,16 +8,16 @@ function checkedSequences(state = [], action) {
       return [
         ...state,
         {
-          value: action.item,
-          uniqueValue: uniqueSequenceCalculator(action.item)
+          value: action.value,
+          uniqueValue: uniqueSequenceCalculator(action.value)
         }
       ];
     case types.UPDATE_HISTORY_ITEM:
       return state.map((historyItem, index) => {
         if (index === action.index) {
           return Object.assign({}, historyItem, {
-            value: historyItem.value,
-            uniqueValue: uniqueSequenceCalculator(historyItem.item)
+            value: action.value,
+            uniqueValue: uniqueSequenceCalculator(action.value)
           });
         }
         return historyItem;
@@ -38,10 +38,22 @@ function enteredSequence(state = '' , action) {
   }
 }
 
+function historyItemIndex(state = null, action) {
+  switch (action.type) {
+    case types.ENABLE_EDIT_MODE:
+      return action.index;
+    case types.DISABLE_EDIT_MODE:
+      return null;
+    default:
+      return state;
+  }
+}
+
 
 const uniqueSequenceApp = combineReducers({
   enteredSequence,
-  checkedSequences
+  checkedSequences,
+  historyItemIndex
 });
 
 export default uniqueSequenceApp;
